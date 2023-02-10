@@ -47,6 +47,7 @@ function add_list(node) {
 */
 
 function loop_size(node) {
+	/*
 	let current;
 
 	current = node;
@@ -67,6 +68,28 @@ function loop_size(node) {
 		current = current.next;
 	}
 	return 0;
+	*/
+
+	const seen = [];
+	let current, count, other;
+
+	current = node;
+
+	while (!seen.includes(current)) {
+		console.log(`trabalhando com o ${current.data}`);
+		seen.push(current);
+		current = current.next;
+	}
+
+	other = current.next;
+	count = 1;
+	while (other !== current) {
+		count++;
+		other = other.next;
+	}
+
+	console.log(seen)
+	return count;
 }
 
 const head = new Node("a", null);
@@ -102,6 +125,6 @@ const 三 = new Node("3", null);
 三.next = 一;
 
 console.log(loop_size(head));
-console.log(loop_size(single));
-console.log(loop_size(uno));
-console.log(loop_size(一));
+//console.log(loop_size(single));
+//console.log(loop_size(uno));
+//console.log(loop_size(一));
